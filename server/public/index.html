@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" rel="stylesheet">
+    <script src="lib/socket.io.js"></script>
+    <script src="lib/chance.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>VIRTU VIEW</h1>
+        <br>
+        <div class="group">
+            <h3>Result:</h3>
+            <div id="imageContainer"></div>
+        </div>
+
+        <br>
+        <hr>
+        <form>
+            <div class="group">
+                <h3>Debug info:</h3>
+                <input id="copyText">
+                <br>
+                <button class="btn" id="copyToClipboard"><span>Copy to Clipboard</span></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var email = chance.email();
+        var guid = chance.guid();
+
+        var copyTextField = document.querySelector('#copyText');
+        var imageContainer = document.querySelector('#imageContainer');
+        var img;
+
+
+        // copyTextField.value = '{ "email": "' + email + '", "guid": "' + guid + '"}';
+        copyTextField.value = email;
+
+
+        var copyTextareaBtn = document.querySelector('#copyToClipboard');
+
+        copyTextareaBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            copyTextField.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copying text command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+        });
+
+
+        var socket = io.connect( 'http://virtu.mobi' + ':9000');
+
+        socket.emit('MESSAGE_FROM_CLIENT', copyTextField.value);
+
+        socket.on('MESSAGE_TO_CLIENT', function (imagePath) {
+            if(imagePath) {
+                insertImageFn(imagePath);
+            }
+        });
+
+        var insertImageFn = function (imagePath) {
+            img = new Image();
+            imageContainer.innerHTML = '';
+
+            img.onload = function() {
+                imageContainer.appendChild(img);
+            };
+
+            img.src = imagePath;    
+        }
+
+        var statusFn = function (eventName) {
+            return function (e) {
+                console.log(eventName);
+            }
+        };
+
+        socket.on('connect_error', statusFn('connect_error'));
+        socket.on('connect_timeout', statusFn('connect_timeout'));
+        socket.on('reconnect', statusFn('reconnect'));
+        socket.on('reconnect_attempt', statusFn('reconnect_attempt'));
+        socket.on('reconnecting', statusFn('reconnecting'));
+        socket.on('reconnect_error', statusFn('reconnect_error'));
+        socket.on('reconnect_failed', statusFn('reconnect_failed'));
+        socket.on('ping', statusFn('ping'));
+        socket.on('pong', statusFn('pong'));
+
+    </script>
+
+</body>
+</html>

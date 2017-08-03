@@ -1,0 +1,25 @@
+{
+  "name": "sockets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-redirect": "^1.2.2",
+    "pug": "^2.0.0-rc.1",
+    "qrcode-js": "0.0.2",
+    "socket.io": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "nodemon ./server/index.js --port 9123",
+    "start:client": "nodemon ./client/index.js --port 9001",
+    "dev": "npm run start:server && npm run start:client"
+  },
+  "author": "",
+  "license": "ISC"
+}
