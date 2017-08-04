@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "express": "^4.15.3",
     "express-redirect": "^1.2.2",
     "pug": "^2.0.0-rc.1",
