@@ -37,9 +37,7 @@
         var copyTextField = document.querySelector('#copyText');
         var imageContainer = document.querySelector('#imageContainer');
         var img;
-
-
-        // copyTextField.value = '{ "email": "' + email + '", "guid": "' + guid + '"}';
+        
         copyTextField.value = email;
 
 
@@ -60,7 +58,7 @@
         });
 
 
-        var socket = io.connect( 'http://virtu.mobi' + ':9000');
+        var socket = io.connect( window.location.href );
 
         socket.emit('MESSAGE_FROM_CLIENT', copyTextField.value);
 

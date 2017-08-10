@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>VR View</title>
+
+    <script src="//storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+<div id="vrview"></div>
+</body>
+
+<script>
+    var myHotspotId = "oscars-head";
+
+    window.addEventListener('load', onVrViewLoad)
+    function onVrViewLoad() {
+        var vrView = new VRView.Player('#vrview', {
+           // image: '//storage.googleapis.com/vrview/examples/coral.jpg',
+            image: '//virtu.mobi:9000/vrimage/oscars.jpg',
+            is_stereo: true,
+            width: '100%',
+            height: 1000,
+            is_debug: true,
+        });
+
+        vrView.on('ready',function(){
+            vrView.addHotspot(myHotspotId, {
+                pitch: 30, // -90 / 90
+                yaw: 90, // In degrees. To the right is positive. -180 / 180
+                radius:   0.2, // Radius of the circular target in meters.
+                distance: 3, // Distance of target from camera in meters.
+            });
+        });
+
+
+        vrView.on('click', function(event) {
+
+            if (event.id == myHotspotId) {
+               alert('CLICK!')
+                // Handle hotspot click.
+            }
+        });
+    }
+</script>
+</html>
