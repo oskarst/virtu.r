@@ -12,17 +12,12 @@ app.use( bodyParser.urlencoded( {
 
 app.options('*', cors());
 
-var qrcode = require('qrcode-js');
-var url = 'http://www.virtu.mobi:9000';
-var base64 = qrcode.toDataURL(url, 4);
-
-
 var clients = {};
 
 var io = require('socket.io')(server);
 
 app.post('/v1/vr', function(req, res) {
-	var params = req.body;
+    var params = req.body;
     var client = clients[params.email];
 
     if(client) {
@@ -33,6 +28,11 @@ app.post('/v1/vr', function(req, res) {
             data: null
         });
     } else {
+
+        var qrcode = require('qrcode-js');
+        var url = 'http://local.virtu.test:9000/?qid=' + params.email + '&image=' + params.image;
+        var base64 = qrcode.toDataURL(url, 4);
+
         res.send({
             code: 1,
             data: base64
@@ -42,6 +42,7 @@ app.post('/v1/vr', function(req, res) {
 
 app.get('/v1/vr/:email/:image', function(req, res) {
     var client = clients[req.param('email')];
+
 
     if(client) {
        client.socket.emit('MESSAGE_TO_CLIENT', req.param('image'));
@@ -55,7 +56,7 @@ app.get('/v1/vr/:email/:image', function(req, res) {
             code: 1,
             data: base64
         })
-    };
+    }
 });
 
 app.use(express.static( __dirname + '/public'));
