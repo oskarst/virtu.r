@@ -7,7 +7,7 @@
     <script src="lib/chance.min.js"></script>
     <script src="lib/NoSleep.min.js"></script>
     <style>
-        body {
+        html {
             background: url('http://virtu.mobi:9000/vrimage/10vr.JPG') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -57,7 +57,7 @@
 
         if (imageUrlPath) {
             console.log(imageUrlPath);
-            document.body.style.backgroundImage = 'url(' + imageUrlPath + ')';
+            document.html.style.backgroundImage = 'url(' + imageUrlPath + ')';
         }
 
         var guid = chance.guid();
@@ -96,7 +96,7 @@
         });
 
         var insertImageFn = function (imagePath) {
-            document.body.style.backgroundImage = 'url(' + imagePath + ')';
+            document.html.style.backgroundImage = 'url(' + imagePath + ')';
         };
 
         var statusFn = function (eventName) {
