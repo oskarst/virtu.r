@@ -30,7 +30,7 @@ app.post('/v1/vr', function(req, res) {
     } else {
 
         var qrcode = require('qrcode-js');
-        var url = 'http://local.virtu.test:9000/?qid=' + params.email + '&image=' + params.image;
+        var url = 'http://virtu.mobi:9000/?qid=' + params.email + '&image=' + params.image;
         var base64 = qrcode.toDataURL(url, 4);
 
         res.send({
