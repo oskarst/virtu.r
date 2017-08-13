@@ -8,7 +8,6 @@
     <script src="lib/NoSleep.min.js"></script>
     <style>
         html {
-            background: url('http://virtu.mobi:9000/vrimage/10vr.JPG') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -25,7 +24,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#000000"></head>
 <body>
 <div class="main">
-
+<div id="toggle"></div>
 </div>
 
     <script>
@@ -62,7 +61,7 @@
 
         if (imageUrlPath) {
             console.log(imageUrlPath);
-            document.html.style.backgroundImage = 'url(' + imageUrlPath + ')';
+            document.documentElement.style.backgroundImage = 'url(' + imageUrlPath + ')';
         }
 
         var guid = chance.guid();
@@ -70,29 +69,10 @@
         var copyTextField = document.querySelector('#copyText');
         var imageContainer = document.querySelector('#imageContainer');
 
-        copyTextField.value = email;
-
-
-        var copyTextareaBtn = document.querySelector('#copyToClipboard');
-
-        copyTextareaBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            copyTextField.select();
-
-            try {
-                var successful = document.execCommand('copy');
-                var msg = successful ? 'successful' : 'unsuccessful';
-                console.log('Copying text command was ' + msg);
-            } catch (err) {
-                console.log('Oops, unable to copy');
-            }
-        });
-
 
         var socket = io.connect( window.location.href );
 
-        socket.emit('MESSAGE_FROM_CLIENT', copyTextField.value);
+        //socket.emit('MESSAGE_FROM_CLIENT', copyTextField.value);
 
         socket.on('MESSAGE_TO_CLIENT', function (imagePath) {
             if(imagePath) {
@@ -101,7 +81,7 @@
         });
 
         var insertImageFn = function (imagePath) {
-            document.html.style.backgroundImage = 'url(' + imagePath + ')';
+            document.documentElement.style.backgroundImage = 'url(' + imagePath + ')';
         };
 
         var statusFn = function (eventName) {
