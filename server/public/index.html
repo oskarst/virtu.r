@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Mobile</title>
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" rel="stylesheet">
     <script src="lib/socket.io.js"></script>
     <script src="lib/chance.min.js"></script>
     <script src="lib/NoSleep.min.js"></script>
@@ -17,33 +15,13 @@
             background-size: cover;
         }
     </style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
 <div class="main">
 
 </div>
-    <div class="container" style="display:none">
-        <h1>VIRTU VIEW</h1>
-        <br>
-        <div class="group">
-            <h3>Result:</h3>
-            <div id="imageContainer"></div>
-        </div>
-
-        <br>
-        <hr>
-        <form>
-            <div class="group">
-                <h3>Debug info:</h3>
-                <input id="copyText">
-                <br>
-                <button class="btn" id="copyToClipboard"><span>Copy to Clipboard</span></button>
-            </div>
-        </form>
-        <button id="toggle"></button>
-    </div>
 
     <script>
         // prevent from sleeping
