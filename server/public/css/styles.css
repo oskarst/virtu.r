@@ -1,8 +1,30 @@
+html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #000000;
+    background-repeat: no-repeat;
+}
+
+* {
+    box-sizing:border-box;
+}
+
 body {
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+
     font-family: 'Oswald', sans-serif;
 }
 
-* { box-sizing:border-box; }
+#debug {
+    display: none;
+}
+
+
+
 
 .container 		{
     width:800px;

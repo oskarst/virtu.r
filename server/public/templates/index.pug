@@ -1,0 +1,24 @@
+include head
+
+body
+    div.main
+
+    div.container#debug
+        h1 Virtu View
+        br
+        div.group
+            h3 Result:
+            div#imageContainer
+        br
+        hr
+        form
+            div.group
+                h3 Debug info:
+                input#copyText
+                br
+                button.btn#copyToClipboard
+                    span Copy to Clipboard
+        button#toggle
+
+script(src="js/nosleep.js")
+script(src="js/main.js")

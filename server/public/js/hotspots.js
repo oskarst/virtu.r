@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>VR View</title>
-
-    <script src="//storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000000;
-        }
-    </style>
-</head>
-<body>
-<div id="vrview"></div>
-</body>
-
-<script>
-    var myHotspotId = "oscars-head";
+/* var myHotspotId = "oscars-head";
 
     window.addEventListener('load', onVrViewLoad)
     function onVrViewLoad() {
@@ -53,6 +28,4 @@
                 // Handle hotspot click.
             }
         });
-    }
-</script>
-</html>
+    }*/
