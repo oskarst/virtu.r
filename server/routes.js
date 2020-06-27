@@ -1,6 +1,6 @@
 module.exports = function (app) {
 
-    let coreTitle = "virtu.mobi";
+    let coreTitle = "evr.vision";
 
     app.get('/', function (req, res) {
         res.render('index', {
