@@ -16,7 +16,8 @@ module.exports = function (app, server) {
             });
         } else {
             let qrcode = require('qrcode-js');
-            let url = 'http://evr.vision:9000/?qid=' + params.email + '&image=' + params.image;
+            let url = 'http://get.evr.vision:9000/?qid=' + params.email + '&image=' + params.image;
+            console.log('encoding URL' + url);
             let base64 = qrcode.toDataURL(url, 4);
 
             res.send({
