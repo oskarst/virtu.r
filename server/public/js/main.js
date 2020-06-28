@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     var insertImageFn = function (imagePath) {
-        var imageUrlPath = 'http://virtu.mobi:9000/vrimage/' + imagePath;
+        var imageUrlPath = 'http://get.evr.vision:9000/vrimage/' + imagePath;
         document.documentElement.style.backgroundImage = 'url(' + imageUrlPath + ')';
     };
 
