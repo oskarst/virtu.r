@@ -8,7 +8,7 @@
     "cors": "^2.8.4",
     "express": "^4.15.3",
     "express-redirect": "^1.2.2",
-    "pug": "^2.0.0-rc.3",
+    "pug": "^3.0.1",
     "qrcode-js": "0.0.2",
     "socket.io": "^2.0.1"
   },
